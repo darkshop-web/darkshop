@@ -1,0 +1,218 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>DarkPlay Store</title>
+
+<style>
+
+body{
+  margin:0;
+  font-family:Arial;
+  background:#0b0f1a;
+  color:white;
+}
+
+/* HEADER */
+header{
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  padding:15px 30px;
+  background:#0f1629;
+  box-shadow:0 0 10px #00ffc3;
+}
+
+.logo{
+  font-size:22px;
+  color:#00ffc3;
+  font-weight:bold;
+}
+
+nav a{
+  color:white;
+  margin:0 15px;
+  text-decoration:none;
+}
+
+nav a:hover{
+  color:#00ffc3;
+}
+
+/* TITLE */
+.title{
+  text-align:center;
+  margin:30px 0;
+}
+
+.title h1{
+  color:#00ffc3;
+  text-shadow:0 0 10px #00ffc3;
+}
+
+/* GRID */
+.container{
+  display:grid;
+  grid-template-columns:repeat(auto-fill, 220px);
+  gap:25px;
+  justify-content:center;
+  padding:20px;
+}
+
+/* CARD */
+.card{
+  background:#111a2e;
+  border-radius:12px;
+  overflow:hidden;
+  transition:0.3s;
+  box-shadow:0 0 10px #00ffc333;
+}
+
+.card:hover{
+  transform:scale(1.05);
+  box-shadow:0 0 20px #00ffc3;
+}
+
+.card img{
+  width:100%;
+  height:120px;
+  object-fit:cover;
+}
+
+.card h2{
+  font-size:16px;
+  margin:8px;
+}
+
+.type{
+  color:#00ffc3;
+  margin-left:8px;
+  font-size:12px;
+}
+
+.price{
+  margin-left:8px;
+  font-size:18px;
+  font-weight:bold;
+}
+
+button{
+  margin:10px;
+  padding:8px;
+  width:90%;
+  border:none;
+  background:#00ffc3;
+  color:black;
+  border-radius:6px;
+  cursor:pointer;
+  font-weight:bold;
+}
+
+button:hover{
+  background:#00cc99;
+}
+
+/* FOOTER */
+.footer{
+  margin-top:30px;
+  padding:20px;
+  text-align:center;
+  background:#0f1629;
+  color:#aaa;
+}
+
+</style>
+</head>
+
+<body>
+
+<header>
+  <div class="logo">🎮 DARKPLAY</div>
+  <nav>
+    <a href="#">Home</a>
+    <a href="#">Games</a>
+    <a href="#">Contact</a>
+  </nav>
+</header>
+
+<div class="title">
+  <h1> FEATURED GAMES </h1>
+</div>
+
+<div class="container" id="games"></div>
+
+<div class="footer">
+  © 2026 DarkPlay Store - All rights reserved
+</div>
+
+<script>
+
+let games = [
+  {
+    name:"Forza Horizon 5",
+    price:8,
+    type:"Full Access",
+    img:"https://cdn.cloudflare.steamstatic.com/steam/apps/1551360/header.jpg"
+  },
+  {
+    name:"God of War Ragnarok",
+    price:10,
+    type:"Full Access",
+    img:"https://cdn.cloudflare.steamstatic.com/steam/apps/2322010/header.jpg"
+  },
+  {
+    name:"NBA 2K25",
+    price:10,
+    type:"Shared",
+    img:"https://cdn.cloudflare.steamstatic.com/steam/apps/2338770/header.jpg"
+  },
+  {
+    name:"Ghost of Tsushima",
+    price:10,
+    type:"Full Access",
+    img:"https://cdn.cloudflare.steamstatic.com/steam/apps/2215430/header.jpg"
+  },
+  {
+    name:"Mortal Kombat 1",
+    price:12,
+    type:"Full Access",
+    img:"https://cdn.cloudflare.steamstatic.com/steam/apps/1971870/header.jpg"
+  },
+  {
+    name:"Far Cry 5",
+    price:14,
+    type:"Full Access",
+    img:"https://cdn.cloudflare.steamstatic.com/steam/apps/552520/header.jpg"
+  }
+];
+
+function load(){
+  let html = "";
+
+  games.forEach(game => {
+    html += `
+      <div class="card">
+        <img src="${game.img}">
+        <h2>${game.name}</h2>
+        <p class="type">${game.type}</p>
+        <p class="price">${game.price} DT</p>
+        <button onclick="buy('${game.name}')">Buy Now</button>
+      </div>
+    `;
+  });
+
+  document.getElementById("games").innerHTML = html;
+}
+
+function buy(game){
+  let phone = "21621093622"; // حط رقمك
+  let message = "سلام، نحب نشري " + game;
+  window.open(`https://wa.me/${phone}?text=${encodeURIComponent(message)}`);
+}
+
+load();
+
+</script>
+
+</body>
+</html>
